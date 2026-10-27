@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "validated_from": "Persisted CSV files",
+  "row_counts": {
+    "compounds": 1000,
+    "instruments": 1000,
+    "assay_methods": 3000,
+    "batches": 3000,
+    "samples": 12000,
+    "test_results": 36000,
+    "deviations": 1894
+  },
+  "total_data_rows": 57894,
+  "foreign_key_relationships_validated": 7,
+  "orphan_foreign_keys": 0,
+  "duplicate_primary_keys": 0,
+  "result_status_counts": {
+    "Pass": 34106,
+    "Fail": 1894
+  },
+  "batch_status_counts": {
+    "Released": 1106,
+    "Rejected": 1421,
+    "OnHold": 473
+  },
+  "checks": [
+    "At least 1000 data rows in every CSV; unique non-null primary keys",
+    "CSV row shape and required values; all seven foreign-key relationships",
+    "Parent coverage; unique optional deviation per result",
+    "Compound-specific methods; instrument technique and laboratory site alignment",
+    "Result units and numeric specification-based pass/fail consistency",
+    "Manufacturing, collection, receipt, test, expiry and investigation chronology",
+    "Method effectiveness, commissioning and calibration validity on test date",
+    "Every failed result has exactly one deviation; no passing result has a deviation",
+    "Batch disposition reconciles to open/closed investigations",
+    "Three batches per compound, four samples per batch, three distinct tests per sample"
+  ],
+  "sha256": {
+    "compounds.csv": "3327b2b6cd4d448687d87b62ae7a146a5cd267d4abc1242dd56ef1431b62eaa4",
+    "instruments.csv": "bd82adefdbacc246a4a1019cc9a2178b22543a5dcff7b15e0208389e65bb0d74",
+    "assay_methods.csv": "0fe554802a50110d6fa9ea672fc0b9832d9a3de417ea7de0a5ea386f6184f8ec",
+    "batches.csv": "1becc2b9cb1ed72c197c094e3cebe826fc8eb3420c7f1ca99d0412c8988fa70a",
+    "samples.csv": "d19bce417ab8b09cbfcf20aa69b8c78c4a66d96dd74af9af2d4af2712e473947",
+    "test_results.csv": "3877f7aed4d4df48921034e2a63163bf29d6c2e6f998e33e348983d432c6ab25",
+    "deviations.csv": "1d27be44983d068c4955e80a39a59d96ddf79a271f92b33e7f678bc2b14c8c5d"
+  }
+}

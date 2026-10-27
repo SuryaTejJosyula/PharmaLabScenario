@@ -1,0 +1,498 @@
+{
+  "dataset": "Synthetic pharmaceutical quality-control laboratory",
+  "snapshot_date": "2026-10-27",
+  "seed": 20261027,
+  "synthetic": true,
+  "format": {
+    "encoding": "UTF-8",
+    "delimiter": ",",
+    "header": true,
+    "date_format": "yyyy-MM-dd",
+    "null_representation": ""
+  },
+  "entities": [
+    {
+      "table": "compounds",
+      "file": "compounds.csv",
+      "primary_key": "compound_id",
+      "row_count": 1000,
+      "description": "Fictional small-molecule candidates, each modeled as one oral formulation.",
+      "columns": [
+        {
+          "name": "compound_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "compound_name",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "therapeutic_area",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "modality",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "dosage_form",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "nominal_strength_mg",
+          "lakehouse_type": "BIGINT",
+          "nullable": false
+        },
+        {
+          "name": "development_stage",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "storage_condition",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "storage_temperature_min_c",
+          "lakehouse_type": "BIGINT",
+          "nullable": false
+        },
+        {
+          "name": "storage_temperature_max_c",
+          "lakehouse_type": "BIGINT",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "table": "instruments",
+      "file": "instruments.csv",
+      "primary_key": "instrument_id",
+      "row_count": 1000,
+      "description": "Analytical instruments across a synthetic network of 20 laboratory sites.",
+      "columns": [
+        {
+          "name": "instrument_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "instrument_name",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "lab_site_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "technique",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "manufacturer",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "model",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "commissioned_date",
+          "lakehouse_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "calibration_interval_days",
+          "lakehouse_type": "BIGINT",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "table": "assay_methods",
+      "file": "assay_methods.csv",
+      "primary_key": "method_id",
+      "row_count": 3000,
+      "description": "Three compound-specific validated methods per candidate formulation.",
+      "columns": [
+        {
+          "name": "method_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "compound_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "method_name",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "method_version",
+          "lakehouse_type": "BIGINT",
+          "nullable": false
+        },
+        {
+          "name": "test_type",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "required_technique",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "result_unit",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "specification_lower",
+          "lakehouse_type": "DECIMAL(12,3)",
+          "nullable": false
+        },
+        {
+          "name": "specification_upper",
+          "lakehouse_type": "DECIMAL(12,3)",
+          "nullable": false
+        },
+        {
+          "name": "specification_rule",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "method_status",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "effective_date",
+          "lakehouse_type": "DATE",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "table": "batches",
+      "file": "batches.csv",
+      "primary_key": "batch_id",
+      "row_count": 3000,
+      "description": "Clinical-supply manufacturing batches and their QC disposition.",
+      "columns": [
+        {
+          "name": "batch_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "compound_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "batch_number",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "lab_site_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "manufactured_date",
+          "lakehouse_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "expiry_date",
+          "lakehouse_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "batch_size_units",
+          "lakehouse_type": "BIGINT",
+          "nullable": false
+        },
+        {
+          "name": "batch_purpose",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "batch_status",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "table": "samples",
+      "file": "samples.csv",
+      "primary_key": "sample_id",
+      "row_count": 12000,
+      "description": "Finished-product samples at beginning, middle, end and composite locations.",
+      "columns": [
+        {
+          "name": "sample_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "batch_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "sample_type",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "sampling_location",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "collected_date",
+          "lakehouse_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "received_date",
+          "lakehouse_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "quantity_units",
+          "lakehouse_type": "BIGINT",
+          "nullable": false
+        },
+        {
+          "name": "container_type",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "sample_status",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "table": "test_results",
+      "file": "test_results.csv",
+      "primary_key": "result_id",
+      "row_count": 36000,
+      "description": "One final quantitative result per sample and method; no retests.",
+      "columns": [
+        {
+          "name": "result_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "sample_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "method_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "instrument_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "tested_date",
+          "lakehouse_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "analyst_code",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "measured_value",
+          "lakehouse_type": "DECIMAL(12,3)",
+          "nullable": false
+        },
+        {
+          "name": "result_unit",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "result_status",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "instrument_last_calibrated_date",
+          "lakehouse_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "instrument_calibration_due_date",
+          "lakehouse_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "replicate_number",
+          "lakehouse_type": "BIGINT",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "table": "deviations",
+      "file": "deviations.csv",
+      "primary_key": "deviation_id",
+      "row_count": 1894,
+      "description": "One investigation per failed result; closed OOS investigations reject the batch.",
+      "columns": [
+        {
+          "name": "deviation_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "result_id",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "deviation_type",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "severity",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "opened_date",
+          "lakehouse_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "closed_date",
+          "lakehouse_type": "DATE",
+          "nullable": true
+        },
+        {
+          "name": "investigation_status",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "root_cause_category",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "corrective_action",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "disposition",
+          "lakehouse_type": "STRING",
+          "nullable": false
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from_entity": "compounds",
+      "from_key": "compound_id",
+      "relationship": "hasBatch",
+      "to_entity": "batches",
+      "to_foreign_key": "compound_id",
+      "cardinality": "one-to-many",
+      "required_child_reference": true
+    },
+    {
+      "from_entity": "compounds",
+      "from_key": "compound_id",
+      "relationship": "hasValidatedMethod",
+      "to_entity": "assay_methods",
+      "to_foreign_key": "compound_id",
+      "cardinality": "one-to-many",
+      "required_child_reference": true
+    },
+    {
+      "from_entity": "batches",
+      "from_key": "batch_id",
+      "relationship": "hasSample",
+      "to_entity": "samples",
+      "to_foreign_key": "batch_id",
+      "cardinality": "one-to-many",
+      "required_child_reference": true
+    },
+    {
+      "from_entity": "samples",
+      "from_key": "sample_id",
+      "relationship": "hasTestResult",
+      "to_entity": "test_results",
+      "to_foreign_key": "sample_id",
+      "cardinality": "one-to-many",
+      "required_child_reference": true
+    },
+    {
+      "from_entity": "assay_methods",
+      "from_key": "method_id",
+      "relationship": "producesResult",
+      "to_entity": "test_results",
+      "to_foreign_key": "method_id",
+      "cardinality": "one-to-many",
+      "required_child_reference": true
+    },
+    {
+      "from_entity": "instruments",
+      "from_key": "instrument_id",
+      "relationship": "generatedResult",
+      "to_entity": "test_results",
+      "to_foreign_key": "instrument_id",
+      "cardinality": "one-to-many",
+      "required_child_reference": true
+    },
+    {
+      "from_entity": "test_results",
+      "from_key": "result_id",
+      "relationship": "hasDeviation",
+      "to_entity": "deviations",
+      "to_foreign_key": "result_id",
+      "cardinality": "one-to-zero-or-one",
+      "required_child_reference": true
+    }
+  ],
+  "attributes_not_separate_entities": [
+    "lab_site_id",
+    "analyst_code"
+  ],
+  "warning": "Demonstration only. Not medical advice, regulatory evidence, or real product specifications."
+}
